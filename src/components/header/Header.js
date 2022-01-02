@@ -28,7 +28,7 @@ const Header = () => {
               Home
             </Nav.Link>
 
-            {userInfo?.usrType !== "admin" && user.email ? (
+            {userInfo?.usrType === "learner" && user.email ? (
               <Nav.Link activeClassName="current" as={NavLink} to="/lession">
                 Lession
               </Nav.Link>

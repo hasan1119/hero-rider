@@ -24,7 +24,8 @@ const Profile = () => {
       });
   }, [user.email]);
 
-  const { name, age, phone, email, profile, address, usrType } = userInfo;
+  const { name, age, status, phone, email, profile, address, usrType } =
+    userInfo;
 
   if (loading) {
     return (
@@ -55,6 +56,7 @@ const Profile = () => {
             <h6>Phone: {phone}</h6>
             <p>Address: {address}</p>
             <h5>Email: {email}</h5>
+            <p>Status: {status}</p>
             <p>
               Profile Type: <span className="text-capitalize">{usrType}</span>
             </p>

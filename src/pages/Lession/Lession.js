@@ -1,23 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Container } from "react-bootstrap";
-import Car from "./../../assets/images/car.jpg";
-import Bike from "./../../assets/images/bike.jpg";
 
 const Lession = () => {
-  const lessions = [
-    {
-      img: Car,
-      name: "Car Driving lession!",
-      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque, repudiandae eius reiciendis voluptas labore veritatis at alias ducimus adipisci maxime assumenda harum suscipit.",
-      price: 200,
-    },
-    {
-      img: Bike,
-      name: "Bike riding lession!",
-      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque, repudiandae eius reiciendis voluptas labore veritatis at alias ducimus adipisci maxime assumenda harum suscipit.",
-      price: 100,
-    },
-  ];
+  const [lessions, setLessions] = useState([]);
+  useEffect(() => {
+    fetch("https://murmuring-stream-14048.herokuapp.com/lessions")
+      .then((res) => res.json())
+      .then((data) => setLessions(data));
+  }, []);
+
   return (
     <div className="my-5">
       <Container>
