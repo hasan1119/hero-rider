@@ -10,10 +10,6 @@ function AdminRoute(props) {
 
   const { user } = useAuth();
 
-  if (!user.email) {
-    history.push("/login");
-  }
-
   useEffect(() => {
     fetch(`https://murmuring-stream-14048.herokuapp.com/user/${user.email}`)
       .then((res) => res.json())
@@ -32,7 +28,9 @@ function AdminRoute(props) {
       </div>
     );
   }
-
+  if (!user.email) {
+    history.push("/login");
+  }
   return (
     <Route
       {...rest}
