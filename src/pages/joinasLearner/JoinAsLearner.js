@@ -64,7 +64,7 @@ const Joinaslearner = () => {
         userInfo.append("vahichleType", vahichleType);
         userInfo.append("usrType", "learner");
 
-        fetch("https://murmuring-stream-14048.herokuapp.com/joinLearner", {
+        fetch("https://guarded-crag-87070.herokuapp.com/joinLearner", {
           method: "POST",
           body: userInfo,
         })

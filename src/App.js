@@ -11,8 +11,9 @@ import Profile from "./pages/profile/Profile.js";
 import PrivateRoute from "./protectedRoute/PrivateRoute.js";
 import Footer from "./components/Footer.js";
 import AdminRoute from "./protectedRoute/AdminRoute.js";
-import Lession from "./pages/Lession/Lession.js";
 import Dashboard from "./pages/dashboard/Dashboard.js";
+import Lession from "./pages/Lession/Lession.js";
+import Payment from "./pages/Payement/Payment";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
+            <PrivateRoute path="/payment/:paymentId">
+              <Payment></Payment>
+            </PrivateRoute>
             <PrivateRoute path="/profile">
               <Profile></Profile>
             </PrivateRoute>

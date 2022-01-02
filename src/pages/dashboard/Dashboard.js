@@ -20,7 +20,7 @@ const Dashboard = () => {
   const [maxAge, setMaxAge] = useState(0);
 
   useEffect(() => {
-    fetch(`https://murmuring-stream-14048.herokuapp.com/users`)
+    fetch(`https://guarded-crag-87070.herokuapp.com/users`)
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -40,7 +40,7 @@ const Dashboard = () => {
     setUsers(modifiedOrders);
     const modifiedStatus = { id, status };
 
-    fetch("https://murmuring-stream-14048.herokuapp.com/changestatus", {
+    fetch("https://guarded-crag-87070.herokuapp.com/changestatus", {
       method: "put",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(modifiedStatus),

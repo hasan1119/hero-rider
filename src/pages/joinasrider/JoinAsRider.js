@@ -74,7 +74,7 @@ const JoinAsRider = () => {
         userInfo.append("palet", palet);
         userInfo.append("usrType", "rider");
 
-        fetch("https://murmuring-stream-14048.herokuapp.com/joinRider", {
+        fetch("https://guarded-crag-87070.herokuapp.com/joinRider", {
           method: "POST",
           body: userInfo,
         })

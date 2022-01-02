@@ -1,0 +1,12 @@
+.lession-title{
+    color: teal;
+}
+.lession-text{
+    color: #2c3e50;
+}
+.category-card {
+    box-shadow: 0px 4px 4px 4px gray;
+}
+.purchase-btn{
+    background-color: teal !important;
+}

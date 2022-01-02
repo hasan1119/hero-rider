@@ -11,7 +11,7 @@ function AdminRoute(props) {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`https://murmuring-stream-14048.herokuapp.com/user/${user.email}`)
+    fetch(`https://guarded-crag-87070.herokuapp.com/user/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setUserInfo(data);
