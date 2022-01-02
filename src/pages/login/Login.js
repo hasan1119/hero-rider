@@ -6,15 +6,15 @@ import avatar from "./../../assets/images/avater.png";
 import { Spinner } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth.js";
 const Login = () => {
-  const { signInWithEmail, loading, email } = useAuth();
+  const { signInWithEmail, loading, user } = useAuth();
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const location = useLocation();
-  const redirect = location?.state?.from || "/";
+  const redirect = location?.state?.from || "profile";
   const onSubmit = (data) => {
     signInWithEmail({ ...data, history, redirect });
   };
-  if (email) {
+  if (user.email) {
     return <>{history.replace("/")}</>;
   } else {
     return (

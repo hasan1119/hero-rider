@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState({});
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
+  const history = useHistory();
+
+  if (userInfo?.usrType === "admin") {
+    history.push("/dashboard");
+  }
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/user/${user.email}`)
+    fetch(`https://murmuring-stream-14048.herokuapp.com/user/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setUserInfo(data);

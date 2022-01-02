@@ -1,0 +1,19 @@
+.information-container {
+    margin-top: -50px;
+}
+.information-section {
+    background-color: #f7f1e3;
+}
+
+.information-img img {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 25%;
+}
+
+.information-title{
+    color: teal;
+}
+.information-text {
+    color: #2c3e50;
+}

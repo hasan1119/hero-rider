@@ -1,0 +1,12 @@
+.learner-section{
+    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.5)), url("../../images/Image20220101224759.jpg")center;
+    background-size:cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-learner{
+    background-color: teal;
+    color: #fff !important;
+}

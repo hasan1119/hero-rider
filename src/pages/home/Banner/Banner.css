@@ -1,0 +1,17 @@
+.banner{
+    background-image: linear-gradient(rgba(80, 79, 79, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.thebalance.com/thmb/4_phGepGCGWJows_0vXb38SkvLc=/2121x1414/filters:fill(auto,1)/rideshare-cec6773c29214be692a9e715dbe9430f.jpeg");
+    width: 100%;
+    height:93vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner-text {
+    font-size: 40px;
+}
+
+.btn-banner{
+    background-color: teal;
+    color: #fff !important;
+    width: 25%;
+}

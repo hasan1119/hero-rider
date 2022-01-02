@@ -1,0 +1,19 @@
+.features-card {
+    background-color: #eee;
+    width: 100%;
+}
+
+.features-text{
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.features-title{
+    color: teal;
+    text-align: center;
+}
+
+.btn-features{
+    background-color: teal;
+    color: #fff !important;
+}

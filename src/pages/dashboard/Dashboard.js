@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Container, Form, Spinner, Table } from "react-bootstrap";
+import { Form, Spinner, Table } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [blockUser, setBlockUser] = useState([]);
+  const { user } = useAuth();
+  const history = useHistory();
+
+  if (!user?.email) {
+    history.push("/login");
+  }
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/users")
+    fetch("https://murmuring-stream-14048.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
@@ -17,14 +24,14 @@ const Dashboard = () => {
         setBlockUser([...keys]);
         setLoading(false);
       });
-  }, [users]);
+  }, []);
 
   function blockHandler(e, id, index) {
     const newBlocks = [...blockUser];
     const status = !newBlocks[index];
     newBlocks[index] = status;
 
-    fetch(`http://localhost:5000/blockUser`, {
+    fetch(`https://murmuring-stream-14048.herokuapp.com/blockUser`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ id, isChecked: status }),

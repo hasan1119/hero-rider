@@ -3,18 +3,17 @@ import Swal from "sweetalert2";
 import { Form, Spinner } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth.js";
 import { useHistory } from "react-router-dom";
+import "./JoinAsLearner.css";
 
 const Joinaslearner = () => {
   const history = useHistory();
-  const {
-    email,
-    setEmail,
-    loading,
-    setLoading,
-    singUp,
-    password,
-    setPassword,
-  } = useAuth();
+  const { user } = useAuth();
+
+  if (user.email) {
+    history.push("/");
+  }
+
+  const { email, setEmail, loading, singUp, password, setPassword } = useAuth();
 
   const nameRef = useRef();
   const ageRef = useRef();
@@ -65,7 +64,7 @@ const Joinaslearner = () => {
         userInfo.append("vahichleType", vahichleType);
         userInfo.append("usrType", "learner");
 
-        fetch("http://localhost:5000/joinLearner", {
+        fetch("https://murmuring-stream-14048.herokuapp.com/joinLearner", {
           method: "POST",
           body: userInfo,
         })
@@ -89,127 +88,139 @@ const Joinaslearner = () => {
   }
 
   return (
-    <div className="form-container mt-3">
-      <form className="w-100" onSubmit={HandleRiderJoining}>
-        <h3>Join as a Driving Lesson Learner</h3>
+    <div className="learner-section">
+      <div className="wrapper mt-5 mb-5">
+        <div className="form-container mt-3">
+          <form className="w-100" onSubmit={HandleRiderJoining}>
+            <h3 className="pb-3">Join as a Driving Lesson Learner</h3>
 
-        <div className="d-flex my-2">
-          <Form.Group className="mb-3 w-100">
-            <Form.Label>Your Name</Form.Label>
-            <Form.Control
-              ref={nameRef}
-              name="name"
-              required
-              type="text"
-              placeholder="Enter your Name"
-            />
-          </Form.Group>
+            <div className="d-flex my-2">
+              <Form.Group className="mb-3 w-100">
+                <Form.Label className="form-text">Your Name</Form.Label>
+                <Form.Control
+                  ref={nameRef}
+                  name="name"
+                  required
+                  type="text"
+                  placeholder="Enter your Name"
+                />
+              </Form.Group>
 
-          <Form.Group className="mb-3 w-100 ms-2">
-            <Form.Label>Your Age</Form.Label>
-            <Form.Control
-              type="number"
-              name="age"
-              required
-              ref={ageRef}
-              placeholder="Enter your age"
-            />
-          </Form.Group>
-        </div>
+              <Form.Group className="mb-3 w-100 ms-2">
+                <Form.Label className="form-text">Your Age</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="age"
+                  required
+                  ref={ageRef}
+                  placeholder="Enter your age"
+                />
+              </Form.Group>
+            </div>
 
-        <div className="d-flex my-2">
-          <Form.Group className="mb-3 w-100">
-            <Form.Label>Your email</Form.Label>
-            <Form.Control
-              required
-              type="email"
-              onBlur={(e) => setEmail(e.target.value)}
-              name="email"
-              placeholder="Enter your email address"
-            />
-          </Form.Group>
+            <div className="d-flex my-2">
+              <Form.Group className="mb-3 w-100">
+                <Form.Label className="form-text">Your email</Form.Label>
+                <Form.Control
+                  required
+                  type="email"
+                  onBlur={(e) => setEmail(e.target.value)}
+                  name="email"
+                  placeholder="Enter your email address"
+                />
+              </Form.Group>
 
-          <Form.Group className="mb-3 w-100 ms-2">
-            <Form.Label>Your phone</Form.Label>
-            <Form.Control
-              type="number"
-              required
-              placeholder="Enter your pnone number"
-              ref={phoneRef}
-            />
-          </Form.Group>
-        </div>
+              <Form.Group className="mb-3 w-100 ms-2">
+                <Form.Label className="form-text">Your phone</Form.Label>
+                <Form.Control
+                  type="number"
+                  required
+                  placeholder="Enter your pnone number"
+                  ref={phoneRef}
+                />
+              </Form.Group>
+            </div>
 
-        <div className="my-2">
-          <label className="w-100 ms-2" htmlFor="address">
-            Your present addess
-            <input
-              type="text"
-              id="address"
-              required
-              ref={addressRef}
-              className="form-control w-100"
-              placeholder="Enter your  address"
-            />
-          </label>
-        </div>
+            <div className="my-2">
+              <label className="w-100 ms-2 form-text" htmlFor="address">
+                Your present addess
+                <input
+                  type="text"
+                  id="address"
+                  required
+                  ref={addressRef}
+                  className="form-control w-100"
+                  placeholder="Enter your  address"
+                />
+              </label>
+            </div>
 
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Your Profile picture</Form.Label>
-          <Form.Control required ref={profileRef} type="file" />
-        </Form.Group>
-
-        <div className="d-flex">
-          <div className="w-50">
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Your NID picture</Form.Label>
-              <Form.Control required ref={nidRef} type="file" />
+            <Form.Group controlId="formFile" className="my-3">
+              <Form.Label className="form-text">
+                Your Profile picture
+              </Form.Label>
+              <Form.Control required ref={profileRef} type="file" />
             </Form.Group>
-          </div>
-          <div className="w-50 ms-2">
-            <Form.Label>Vahichle Type</Form.Label>
-            <Form.Select required ref={typeRef}>
-              <option>Car</option>
-              <option>Bike</option>
-            </Form.Select>
-          </div>
-        </div>
 
-        <div className="d-flex">
-          <div className="w-50">
-            <Form.Label htmlFor="password">Your password</Form.Label>
-            <Form.Control
-              required
-              placeholder="your password"
-              type="password"
-              id="password"
-              onBlur={(e) => setPassword(e.target.value)}
-            />
-          </div>
+            <div className="d-flex my-3">
+              <div className="w-50 my-2">
+                <Form.Group controlId="formFile" className="mb-3">
+                  <Form.Label className="form-text">
+                    Your NID picture
+                  </Form.Label>
+                  <Form.Control required ref={nidRef} type="file" />
+                </Form.Group>
+              </div>
+              <div className="w-50 ms-2 my-2">
+                <Form.Label className="form-text">Vahichle Type</Form.Label>
+                <Form.Select required ref={typeRef}>
+                  <option>Car</option>
+                  <option>Bike</option>
+                </Form.Select>
+              </div>
+            </div>
 
-          <div className="w-50 ms-2">
-            <Form.Label htmlFor="confirmpass">Confirm Password</Form.Label>
-            <Form.Control
-              required
-              placeholder="confirm password"
-              type="password"
-              id="confirmpass"
-              ref={confirmPassRef}
-            />
-          </div>
+            <div className="d-flex">
+              <div className="w-50">
+                <Form.Label htmlFor="password" className="form-text">
+                  Your password
+                </Form.Label>
+                <Form.Control
+                  required
+                  placeholder="your password"
+                  type="password"
+                  id="password"
+                  onBlur={(e) => setPassword(e.target.value)}
+                />
+              </div>
+
+              <div className="w-50 ms-2">
+                <Form.Label htmlFor="confirmpass" className="form-text">
+                  Confirm Password
+                </Form.Label>
+                <Form.Control
+                  required
+                  placeholder="confirm password"
+                  type="password"
+                  id="confirmpass"
+                  ref={confirmPassRef}
+                />
+              </div>
+            </div>
+            <div className="my-3">
+              <button type="submit" className="btn btn-learner w-100">
+                {uploading ? (
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                ) : (
+                  "Join Now"
+                )}
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="my-2">
-          <button type="submit" className="btn btn-primary w-100">
-            {uploading ? (
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            ) : (
-              "Join Now"
-            )}
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

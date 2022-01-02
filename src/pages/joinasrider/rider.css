@@ -1,12 +1,36 @@
+.rider-section{
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.5)), url("../../images/Image20220101224355.jpg")center;
+  background-size:cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  background-color: #f7f1e3;
+  width: 40%;
+  padding: 20px;
+}
+
 .form-container {
-  max-width: 500px;
+  max-width: 500px; 
   width: 100%;
-  margin: auto;
+  margin: auto; 
 }
 .form-container h3 {
   text-align: center;
+  color: teal;
+}
+
+.form-text {
+  color: #717374;
 }
 
 label {
   font-weight: bold;
+}
+
+.btn-rider{
+  background-color: teal;
+  color: #fff !important;
 }
